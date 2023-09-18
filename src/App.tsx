@@ -4,7 +4,7 @@ import doctor from "./assets/doctor.png";
 function App() {
   const countToDate = Date.parse("18 Dec 2023 00:00:00 GMT+1");
 
-  let previous;
+  let previous: number;
 
   setInterval(() => {
     const currentDate = new Date();
@@ -15,6 +15,7 @@ function App() {
     previous = timeBetweenDates;
   }, 250);
 
+  // @ts-ignore
   function flipAllCards(time) {
     const days = Math.floor(time / (24 * 3600));
     const hours = Math.floor((time / 3600) % 24);
