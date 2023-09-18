@@ -8,6 +8,7 @@ function App() {
 
   setInterval(() => {
     const currentDate = new Date();
+    // @ts-ignore
     const timeBetweenDates = Math.floor((countToDate - currentDate) / 1000);
     if (timeBetweenDates !== previous) {
       flipAllCards(timeBetweenDates);
@@ -39,6 +40,7 @@ function App() {
     topFlip.innerText = currentValue;
 
     const topHalf = flipCard.querySelector(".top");
+    // @ts-ignore
     const bottomHalf = flipCard.querySelector(".bottom");
     topFlip.addEventListener("animationstart", () => {
       topHalf.innerText = time;
