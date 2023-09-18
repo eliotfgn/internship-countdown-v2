@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #ffffff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,46 +24,179 @@ a:hover {
 }
 
 body {
-  margin: 0;
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 700;
+  width: 100vw;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  background-image: url("./assets/bg-stars.svg");
+}
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
-h1 {
-  font-size: 3.2em;
+h2 {
+  font-size: 2.2em;
   line-height: 1.1;
+  color: #1a1a1a;
+  margin: 0;
+  text-align: center;
+  padding: 10px 18px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.countdown {
+  display: flex;
+  overflow: hidden;
+  gap: 10px;
+  text-align: center;
+  width: 100%;
+  margin: 10px 20px;
 }
-button:hover {
-  border-color: #646cff;
+.flip-card {
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 0 7px 0 0 black;
+  position: relative;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.top-flip,
+.bottom-flip {
+  position: absolute;
+}
+.top-flip {
+  transform-origin: bottom;
+  transform: rotateX(0deg);
+  animation: flip-top 0.5s ease-in forwards;
+}
+.bottom-flip {
+  bottom: 0;
+  animation: flip-bottom 0.5s ease-out 0.5s;
+  transform-origin: top;
+  transform: rotateX(90deg);
+}
+.top,
+.bottom,
+.top-flip,
+.bottom-flip {
+  height: 33px;
+  width: 80px;
+  padding: 21px 16px;
+  color: var(--Soft-red);
+  overflow: hidden;
+  text-align: center;
+}
+.top,
+.top-flip {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.7);
+  background-color: rgb(48, 50, 78);
+}
+.bottom,
+.bottom-flip {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: var(--Dark-desaturated-blue);
+  box-shadow: 0 2px rgb(71, 83, 115, 0.2) inset;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@keyframes flip-top {
+  to {
+    transform: rotateX(90deg);
   }
-  a:hover {
-    color: #747bff;
+}
+@keyframes flip-bottom {
+  to {
+    transform: rotateX(0deg);
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@media (max-width: 400px) {
+  h2 {
+    font-size: 1.5rem;
   }
+  .flip-card {
+    font-size: 1rem;
+  }
+  .countdown {
+    gap: 6px;
+  }
+  .top,
+  .bottom,
+  .top-flip,
+  .bottom-flip {
+    height: 10px;
+    width: 50px;
+    padding: 27px 16px;
+  }
+  .footer > img {
+    width: 100%;
+  }
+  .doctor {
+    height: 250px;
+    width: 200px;
+  }
+
+  .doctor-img {
+    height: 300px;
+    width: 200px;
+  }
+}
+
+@media (min-width: 400px) {
+  .flip-card {
+    font-size: 5rem;
+  }
+  .countdown {
+    gap: 35px;
+  }
+  .top,
+  .bottom,
+  .top-flip,
+  .bottom-flip {
+    height: 80px;
+    width: 100px;
+    padding: 27px 16px;
+  }
+  .footer > img {
+    width: 100%;
+  }
+  .doctor {
+    height: 500px;
+    width: 400px;
+  }
+  .doctor-img {
+    height: 500px;
+    width: 400px;
+  }
+}
+
+p {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.doctor {
+  height: 300px;
+  overflow: hidden;
+}
+
+.doctor-img {
+  height: 100%;
+  object-fit: cover;
 }
